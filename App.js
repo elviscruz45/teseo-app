@@ -16,7 +16,7 @@ LogBox.ignoreAllLogs();
 const composedEnhancers = compose(applyMiddleware(reduxThunk));
 const store = createStore(rootReducers, {}, composedEnhancers);
 
-export default function App() {
+export function App() {
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="white" />

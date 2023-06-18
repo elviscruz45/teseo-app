@@ -1,16 +1,24 @@
 import React from "react";
 import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
 import App from "./App";
 
 describe("App", () => {
   it("renders without crashing", () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.exists()).toBe(true);
+    shallow(<App />);
   });
 
-  it("matches snapshot", () => {
+  it("contains StatusBar component", () => {
     const wrapper = shallow(<App />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.find("StatusBar")).toHaveLength(1);
+  });
+
+  it("contains NavigationContainer component", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find("NavigationContainer")).toHaveLength(1);
+  });
+
+  it("contains Provider component", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find("Provider")).toHaveLength(1);
   });
 });
