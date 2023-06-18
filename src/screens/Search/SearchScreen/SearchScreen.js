@@ -62,7 +62,6 @@ function SearchScreenNoRedux(props) {
       params: { Item: item },
     });
   };
-  console.log("bbbbbbbb");
 
   //this hook is used to retrieve de list of tags in Firebase EquipmentFavorities and to send to Global state EquipmentListHeader
   useEffect(() => {
@@ -82,7 +81,6 @@ function SearchScreenNoRedux(props) {
     }
 
     console.log("onSnashopt following Search ");
-    console.log("ccccccccc");
 
     fetchData();
     return () => {
@@ -95,30 +93,21 @@ function SearchScreenNoRedux(props) {
 
   //Function to sent to Firebase to include/remove the equipment, depending if exist in firestoreEquipmentLiked
   const pressFollow = async (item) => {
-    console.log("1111111");
-
     const PostRef = doc(db, "users", props.uid);
 
     if (firestoreEquipmentLiked?.includes(item.tag)) {
-      console.log("22222222222222");
-
       await updateDoc(PostRef, {
         EquipmentFavorities: arrayRemove(item.tag),
       });
-      console.log("333333333333");
     } else {
-      console.log("4444444444444");
-
       await updateDoc(PostRef, {
         EquipmentFavorities: arrayUnion(item.tag),
       });
-      console.log("5555555555");
     }
   };
 
   return (
     <>
-      {console.log("priemra parte")}
       <SearchBar
         placeholder="Buscar Equipo"
         value={searchText}
@@ -126,7 +115,6 @@ function SearchScreenNoRedux(props) {
       />
 
       {/* {!searchResults && <Loading show text="Cargando" />} */}
-      {console.log("segunda parte")}
 
       <FlatList
         data={searchResults}

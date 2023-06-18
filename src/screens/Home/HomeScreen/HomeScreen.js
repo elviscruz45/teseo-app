@@ -22,7 +22,6 @@ import {
   where,
   limit,
   orderBy,
-  startAfter,
 } from "firebase/firestore";
 import { db } from "../../../utils";
 import { saveActualPostFirebase } from "../../../actions/post";
@@ -42,7 +41,6 @@ function HomeScreen(props) {
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation();
   const [lengPosts, setlengPosts] = useState(POSTS_PER_PAGE);
-  const [lastVisible, setLastVisible] = useState(null);
 
   // this useEffect is used to retrive all data from firebase
   useEffect(() => {
